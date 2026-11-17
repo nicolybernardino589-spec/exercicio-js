@@ -1,0 +1,127 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f1f4f8;
+    color: #202938;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.container {
+    width: 100%;
+    max-width: 560px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 10px 30px rgba(25, 42, 70, 0.10);
+}
+
+.cabecalho {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.marca {
+    color: #1769aa;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+h1 {
+    margin: 12px 0 8px;
+    font-size: 27px;
+}
+
+.cabecalho p {
+    color: #687386;
+    font-size: 14px;
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d5dce5;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #1769aa;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #105487;
+}
+
+.resultado {
+    margin-top: 26px;
+    padding: 22px;
+    border-radius: 10px;
+    background: #f4f8fc;
+    border: 1px solid #dce8f3;
+}
+
+.resultado h2 {
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.linha {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e1e8f0;
+}
+
+.linha.total {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.linha.total strong {
+    color: #1769aa;
+    font-size: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 24px 20px;
+    }
+}
