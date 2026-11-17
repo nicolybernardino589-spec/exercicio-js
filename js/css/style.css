@@ -1,0 +1,107 @@
+
+const formulario = document.getElementById("form-orcamento");
+const painelResultado = document.getElementById("resultado");
+
+/**
+ * Calcula o desconto conforme a forma de pagamento.
+ * @param {string} formaPagamento
+ * @returns {number}
+ */
+function calcularDescontoPagamento(formaPagamento) {
+    switch (formaPagamento) {
+        case "pix":
+            return 0.15;
+
+        case "boleto":
+            return 0.10;
+
+        case "cartao-vista":
+            return 0.05;
+
+        case "cartao-parcelado":
+            return 0;
+
+        default:
+            return 0;
+    }
+}
+
+/**
+ * Calcula o valor da entrega.
+ * @param {string} tipoEntrega
+ * @returns {number}
+ */
+function calcularValorEntrega(tipoEntrega) {
+    switch (tipoEntrega) {
+        case "retirada":
+            return 0;
+
+        case "padrao":
+            return 12;
+
+        case "expressa":
+            return 25;
+
+        case "super-expressa":
+            return 45;
+
+        default:
+            return 0;
+    }
+}
+
+/**
+ * Formata o valor em Real brasileiro.
+ * @param {number} valor
+ * @returns {string}
+ */
+function formatarMoeda(valor) {
+    return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+}
+
+formulario.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const valorProduto = Number(
+        document.getElementById("valor-produto").value
+    );
+
+    const formaPagamento =
+        document.getElementById("pagamento").value;
+
+    const tipoEntrega =
+        document.getElementById("entrega").value;
+
+    if (valorProduto <= 0 || formaPagamento === "" || tipoEntrega === "") {
+        alert("Preencha todos os campos corretamente.");
+        return;
+    }
+
+    const taxaDesconto =
+        calcularDescontoPagamento(formaPagamento);
+
+    const valorDesconto = valorProduto * taxaDesconto;
+
+    const valorFrete =
+        calcularValorEntrega(tipoEntrega);
+
+    const totalFinal =
+        valorProduto - valorDesconto + valorFrete;
+
+    document.getElementById("resultado-produto").textContent =
+        formatarMoeda(valorProduto);
+
+    document.getElementById("resultado-desconto").textContent =
+        "- " + formatarMoeda(valorDesconto);
+
+    document.getElementById("resultado-frete").textContent =
+        formatarMoeda(valorFrete);
+
+    document.getElementById("resultado-total").textContent =
+        formatarMoeda(totalFinal);
+
+    painelResultado.classList.remove("hidden");
+});
